@@ -4,13 +4,6 @@
 
 
 
-## Datasets
-
-- [Houston2013 (Hyperspectral and LiDAR Data)](https://hyperspectral.ee.uh.edu/?page_id=459): The processed .mat files can be obtained on [google drive](https://drive.google.com/file/d/1cyA7sKQlh2c7qrIb7gzexivoyXG8Vie2/view?usp=sharing).
-
-- Trento Data (Hyperspectral and LiDAR Data): Trento dataset is provided by Professor  Prof. L. Bruzzone from the University of Trento.  
-
-
 ## Citation
 
 If you find this work valuable or use our code in your own research, please consider citing us: 
