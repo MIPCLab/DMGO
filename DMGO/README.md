@@ -1,26 +1,6 @@
-# Deep Learning Methods for Multi-modal Remote Sensing Classification
+# Dual-Branch Dynamic Modulation Network for Hyperspectral and LiDAR Data Classification
 
-![author](https://img.shields.io/badge/author-likyoo-blueviolet.svg)![last commit](https://img.shields.io/github/last-commit/likyoo/Multimodal-Remote-Sensing-Toolkit.svg)![license](https://img.shields.io/github/license/likyoo/Multimodal-Remote-Sensing-Toolkit.svg)
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GYbCJcNvWqoTEYszO1pfHvoJVyt-XNK7?usp=sharing)
-
-![Houston2013](imgs/Houston2013.png)
-
-***MMRS*** is a python tool to perform deep learning experiments on multi-modal remote sensing data.
-
-This repository is developed on the top of [DeepHyperX](https://github.com/nshaud/DeepHyperX) . 
-
-
-
-## Models
-
-Currently, the following deep learning methods are available:
-
-- [ ] [Two-Branch CNN](https://ieeexplore.ieee.org/abstract/document/8068943)
-- [x] [EndNet](https://ieeexplore.ieee.org/abstract/document/9179756)
-- [x] [MDL-Hong](https://ieeexplore.ieee.org/document/9174822)
-- [x] [FusAtNet](https://openaccess.thecvf.com/content_CVPRW_2020/html/w6/Mohla_FusAtNet_Dual_Attention_Based_SpectroSpatial_Multimodal_Fusion_Network_for_Hyperspectral_CVPRW_2020_paper.html)
-- [x] [S2ENet](https://ieeexplore.ieee.org/document/9583936) **(ours)**
+***abstract*** Deep learning algorithms that can effectively extract features from different modalities have achieved significant performance in multimodal remote sensing (RS) data classification. However, we actually found that the feature representation of one modality is likely to affect other modalities through parameter back-propagation. Even if multimodal models are superior to their uni-modal counterparts, they are likely to be underutilized. To solve the above issue, a dual-branch dynamic modulation network is proposed for hyperspectral (HS) and light detection and ranging (LiDAR) data classification. Firstly, a novel dynamic multimodal gradient optimization (DMGO) strategy is proposed to control the gradient modulation of each feature extraction branch adaptively. Then, a multimodal bi-directional enhancement (MBE) module is developed to integrate features of different modalities, which aims to enhance the complementarity of HS and LiDAR data. Furthermore, a feature distribution consistency (FDC) loss function is designed to quantify similarities between integrated features and dominant features, which can improve the consistency of features across modalities. Experimental evaluations on Houston2013 and Trento datasets demonstrate that our proposed network exceeds several state-of-the-art multimodal classification methods in terms of fusion classification performance.
 
 
 
@@ -28,49 +8,28 @@ Currently, the following deep learning methods are available:
 
 - [Houston2013 (Hyperspectral and LiDAR Data)](https://hyperspectral.ee.uh.edu/?page_id=459): The processed .mat files can be obtained on [google drive](https://drive.google.com/file/d/1cyA7sKQlh2c7qrIb7gzexivoyXG8Vie2/view?usp=sharing).
 
-- Trento Data (Hyperspectral and LiDAR Data): Trento dataset is provided by Professor  Prof. L. Bruzzone from the University of Trento. 
-
-
-
-## Quickstart using Colab 
-
-You can use *MMRS* on [Google Colab Notebook](https://colab.research.google.com/drive/1GYbCJcNvWqoTEYszO1pfHvoJVyt-XNK7?usp=sharing) without any installation. You can run all cells without any modifications to see how everything works. 
-
-
-
-## Usage
-
-Start a Visdom server: `python -m visdom.server` and go to [`http://localhost:8097`](http://localhost:8097/) to see the visualizations.
-
-Then, run the script `main.py`.
-
-The most useful arguments are:
-
-- `--model` to specify the model (e.g. 'S2ENet', 'Middle_fusion_CNN'),
-- `--dataset` to specify which dataset to use (e.g. 'Houston2013', 'Trento'),
-- the `--cuda` switch to run the neural nets on GPU. The tool fallbacks on CPU if this switch is not specified.
-
-There are more parameters that can be used to control more finely the behaviour of the tool. See `python main.py -h` for more information.
-
-Examples:
-
-```
-!python main.py --model S2ENet --flip_augmentation --patch_size 7 --epoch 128 --lr 0.001 --batch_size 64 --seed 0 --dataset Houston2013 --folder '../' --train_set '../Houston2013/TRLabel.mat' --test_set '../Houston2013/TSLabel.mat' --cuda 0
-```
-
-For more features please refer to [DeepHyperX](https://github.com/nshaud/DeepHyperX).
-
+- Trento Data (Hyperspectral and LiDAR Data): Trento dataset is provided by Professor  Prof. L. Bruzzone from the University of Trento.  
 
 
 ## Citation
 
 If you find this work valuable or use our code in your own research, please consider citing us: 
 
-> S. Fang, K. Li and Z. Li, "S²ENet: Spatial–Spectral Cross-Modal Enhancement Network for Classification of Hyperspectral and LiDAR Data," in IEEE Geoscience and Remote Sensing Letters, vol. 19, pp. 1-5, 2022, Art no. 6504205, doi: 10.1109/LGRS.2021.3121028.
+> Z. Xu, W. Jiang and J. Geng, "Dual-Branch Dynamic Modulation Network for Hyperspectral and LiDAR Data Classification," in IEEE Transactions on Geoscience and Remote Sensing, vol. 61, pp. 1-13, 2023, Art no. 5514813, doi: 10.1109/TGRS.2023.3285097.
 
 Bibtex format :
 
-> @ARTICLE{9583936,  author={Fang, Sheng and Li, Kaiyu and Li, Zhe},  journal={IEEE Geoscience and Remote Sensing Letters},   title={S²ENet: Spatial–Spectral Cross-Modal Enhancement Network for Classification of Hyperspectral and LiDAR Data},   year={2022},  volume={19},  number={},  pages={1-5},  doi={10.1109/LGRS.2021.3121028}}
+> @ARTICLE{10147800,
+  author={Xu, Zhengyi and Jiang, Wen and Geng, Jie},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={Dual-Branch Dynamic Modulation Network for Hyperspectral and LiDAR Data Classification}, 
+  year={2023},
+  volume={61},
+  number={},
+  pages={1-13},
+  keywords={Feature extraction;Laser radar;Optimization;Hyperspectral imaging;Modulation;Training;Data mining;Feature fusion;hyperspectral image (HSI);imbalanced multimodal learning;land cover classification;multimodal remote sensing (RS)},
+  doi={10.1109/TGRS.2023.3285097}}
+
 
 
 
